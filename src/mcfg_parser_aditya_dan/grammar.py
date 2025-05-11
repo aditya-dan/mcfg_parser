@@ -329,6 +329,3 @@ class MCFGRule:
             raise ValueError(
                 'string_yield is only implemented for epsilon rules'
             )
-
-
-
