@@ -1,0 +1,14 @@
+LICENSE
+README.md
+pyproject.toml
+src/mcfg_parser_aditya_dan/__init__.py
+src/mcfg_parser_aditya_dan/grammar.py
+src/mcfg_parser_aditya_dan/parser.py
+src/mcfg_parser_aditya_dan/tree.py
+src/mcfg_parser_aditya_dan.egg-info/PKG-INFO
+src/mcfg_parser_aditya_dan.egg-info/SOURCES.txt
+src/mcfg_parser_aditya_dan.egg-info/dependency_links.txt
+src/mcfg_parser_aditya_dan.egg-info/top_level.txt
+tests/test_grammar.py
+tests/test_parser.py
+tests/test_tree.py
