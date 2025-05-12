@@ -1,6 +1,8 @@
 from collections import deque, defaultdict
+from itertools import product
 from typing import List
 from src.mcfg_parser_aditya_dan.grammar import *
+from src.mcfg_parser_aditya_dan.tree import *
 
 
 class Parser:
@@ -103,3 +105,32 @@ class Parser:
                 try_expand([])
 
         return completed
+
+    def build_trees(self, node, forest):
+        """
+        Recursively constructs all parse-trees for a given instance node.
+
+        Parameters
+        ----------
+        node : MCFGRuleElementInstance
+            A chart entry instance to expand into Trees.
+        forest : dict
+            Mapping from MCFGRuleElementInstance to a list of tuples
+        Returns
+        -------
+        List[Tree]
+            All possible subtree roots under node.
+        """
+
+        if node not in forest or not forest[node]:
+            return [Tree(node.variable, node.string_spans, [])]
+
+        trees = []
+
+        for rule, children in forest[node]:
+            # Recursively build subtrees for each child
+            child_trees_lists = [self.build_trees(child, forest) for child in children]
+            # Combine all child tree alternatives
+            for combo in product(*child_trees_lists):
+                trees.append(Tree(node.variable, node.string_spans, list(combo)))
+        return trees
