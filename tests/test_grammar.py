@@ -72,4 +72,4 @@ class TestMCFGRule:
         assert rule.instantiate_left_side(
             MCFGRuleElementInstance("NP", (1, 2), (5, 7)),
             MCFGRuleElementInstance("VP", (2, 4), (7, 8))
-        ) == MCFGRuleElementInstance('S', (1,4,), (5, 8,))
+        ) == MCFGRuleElementInstance('S', (1, 4,), (5, 8,))
