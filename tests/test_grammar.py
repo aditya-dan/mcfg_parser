@@ -67,4 +67,9 @@ class TestMCFGRule:
         assert self.epsilon_object.string_yield() == 'N'
 
     def test_instantiate_left_side(self):
-        assert self.test_object.instantiate_left_side(MCFGRuleElementInstance('NP', (0,)), MCFGRuleElementInstance('VP',(2,))) == MCFGRuleElementInstance('S', (0,), (2,))
+        rule = MCFGRule.from_string('S(w1u, x1v) -> NP(w1, x1) VP(u, v)')
+
+        assert rule.instantiate_left_side(
+            MCFGRuleElementInstance("NP", (1, 2), (5, 7)),
+            MCFGRuleElementInstance("VP", (2, 4), (7, 8))
+        ) == MCFGRuleElementInstance('S', (1,4,), (5, 8,))
